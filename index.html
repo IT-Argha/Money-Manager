@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1><i class="fas fa-wallet"></i> Money Manager</h1>
+        </header>
+
+        <main class="app-main">
+            <!-- Balance Summary Section -->
+            <section class="balance-summary">
+                <div class="balance-card today">
+                    <h3>Today's Balance</h3>
+                    <p id="today-balance">₹0.00</p>
+                    <div class="breakdown">
+                        <span id="today-income">+₹0.00</span>
+                        <span id="today-expense">-₹0.00</span>
+                    </div>
+                </div>
+                <div class="balance-card yesterday">
+                    <h3>Yesterday <small id="yesterday-date"></small></h3>
+                    <p id="yesterday-balance">₹0.00</p>
+                    <div class="breakdown">
+                        <span id="yesterday-income">+₹0.00</span>
+                        <span id="yesterday-expense">-₹0.00</span>
+                    </div>
+                </div>
+                <div class="balance-card total">
+                    <h3>Total Balance</h3>
+                    <p id="total-balance">₹0.00</p>
+                    <div class="breakdown">
+                        <span id="total-income">+₹0.00</span>
+                        <span id="total-expense">-₹0.00</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Transaction Form -->
+            <section class="transaction-form">
+                <h2><i class="fas fa-plus-circle"></i> Add Transaction</h2>
+                <form id="transaction-form">
+                    <div class="form-group">
+                        <label for="txn-date">Date</label>
+                        <input type="date" id="txn-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txn-type">Type</label>
+                        <select id="txn-type" required>
+                            <option value="income">Income (+)</option>
+                            <option value="expense">Expense (-)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="txn-mode">Category</label>
+                        <select id="txn-mode" required>
+                            <option value="personal">Personal</option>
+                            <option value="office">Office</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="txn-amount">Amount (₹)</label>
+                        <input type="number" id="txn-amount" step="0.01" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txn-description">Description</label>
+                        <input type="text" id="txn-description" placeholder="Optional">
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-save"></i> Save Transaction
+                    </button>
+                </form>
+            </section>
+
+            <!-- Transactions Table -->
+            <section class="transactions">
+                <div class="section-header">
+                    <h2><i class="fas fa-list"></i> All Transactions</h2>
+                    <button id="export-csv" class="btn-export">
+                        <i class="fas fa-file-csv"></i> Export CSV
+                    </button>
+                </div>
+                <div class="table-container">
+                    <table id="transactions-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Category</th>
+                                <th>Amount</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Transactions will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Save Confirmation Popup -->
+    <div id="save-popup" class="popup hidden">
+        <div class="popup-content">
+            <span class="popup-close">&times;</span>
+            <p><i class="fas fa-check-circle"></i> Transaction saved successfully!</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
